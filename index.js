@@ -20,6 +20,14 @@ var api = new ParseServer({
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
+  },
+  emailAdapter: {
+    module: 'parse-server-simple-mailgun-adapter',
+    options: {
+      fromAddress: 'reset_password@joindropin.com',
+      domain: 'joindropin.com',
+      apiKey: process.env.MG_API_KEY
+    }
   }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
