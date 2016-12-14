@@ -24,8 +24,8 @@ var api = new ParseServer({
   push: {
     ios: {
       pfx: './parse-push-prod.p12',
-      bundleId: '',
-      production: process.env.PUSH_ENV
+      bundleId: 'NickPrakash.Drop-In',
+      production: false
     }
   }
 });
