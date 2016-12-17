@@ -18,8 +18,15 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   fileKey: process.env.FILE_KEY || '',
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
-  liveQuery: {
-    classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
+  publicServerURL: process.env.SERVER_URL || 'http://localhost:1337/parse',
+  appName: 'Drop In',
+  emailAdapter: {
+    module: 'parse-server-simple-mailgun-adapter',
+    options: {
+      fromAddress: 'support@joindropin.com',
+      domain: 'joindropin.com',
+      apiKey: process.env.MG_API_KEY || '',
+    }
   },
   push: {
     ios: {
