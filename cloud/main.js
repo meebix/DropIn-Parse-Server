@@ -106,7 +106,7 @@ Parse.Cloud.define('dropInTotalUsersMale', function(req, res) {
 
 // drop in total female users since v2
 
-Parse.Cloud.define('dropInTotalUsersMale', function(req, res) {
+Parse.Cloud.define('dropInTotalUsersFemale', function(req, res) {
 
   var BarMetrics = Parse.Object.extend("Metrics_DropIn");
   var query = new Parse.Query(BarMetrics);
