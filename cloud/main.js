@@ -84,7 +84,7 @@ Parse.Cloud.define('dropInTotalUsers', function(req, res) {
 
 
 Parse.Cloud.define('hello', function(req, res) {
-  res.success('Hi its nick');
+  res.success('Hi its nickaroo');
 });
 
 ///########### cloud code function for Drop In Insight ##############################
