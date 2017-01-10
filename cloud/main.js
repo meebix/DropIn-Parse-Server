@@ -79,6 +79,81 @@ Parse.Cloud.define('dropInTotalUsers', function(req, res) {
 });
 
 
+// drop in total male users since v2
+
+Parse.Cloud.define('dropInTotalUsersMale', function(req, res) {
+
+  var BarMetrics = Parse.Object.extend("Metrics_DropIn");
+  var query = new Parse.Query(BarMetrics);
+  query.descending("date");
+  query.limit(1);
+  query.find({
+    success: function(results) {
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+
+        res.success(object.get('totalUsersMale'));
+      }
+
+    },
+    error: function(error) {
+      res.error("Error: " + error.code + " " + error.message);
+    }
+  });
+
+});
+
+
+// drop in total female users since v2
+
+Parse.Cloud.define('dropInTotalUsersMale', function(req, res) {
+
+  var BarMetrics = Parse.Object.extend("Metrics_DropIn");
+  var query = new Parse.Query(BarMetrics);
+  query.descending("date");
+  query.limit(1);
+  query.find({
+    success: function(results) {
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+
+        res.success(object.get('totalUsersFemale'));
+      }
+
+    },
+    error: function(error) {
+      res.error("Error: " + error.code + " " + error.message);
+    }
+  });
+
+});
+
+
+// drop in total female users since v2
+
+Parse.Cloud.define('dropInTotalUsersUndef', function(req, res) {
+
+  var BarMetrics = Parse.Object.extend("Metrics_DropIn");
+  var query = new Parse.Query(BarMetrics);
+  query.descending("date");
+  query.limit(1);
+  query.find({
+    success: function(results) {
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+
+        res.success(object.get('totalUsersUndef'));
+      }
+
+    },
+    error: function(error) {
+      res.error("Error: " + error.code + " " + error.message);
+    }
+  });
+
+});
+
+
 
 
 
