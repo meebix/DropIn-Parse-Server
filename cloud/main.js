@@ -1,7 +1,5 @@
 
-Parse.Cloud.define('hello', function(req, res) {
-  res.success('Hi its nick');
-});
+
 
 ///########### cloud code function for Drop In Insight ##############################
 
@@ -181,5 +179,9 @@ Parse.Cloud.define('dropInTotalFemaleUsers', function(req, res) {
 
 });
 
+
+Parse.Cloud.define('hello', function(req, res) {
+  res.success('Hi its nick');
+});
 
 ///########### cloud code function for Drop In Insight ##############################
