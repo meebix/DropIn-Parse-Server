@@ -154,6 +154,41 @@ Parse.Cloud.define('dropInTotalUsersUndef', function(req, res) {
 });
 
 
+// drop in total users gender breakdown since v2
+
+Parse.Cloud.define('dropInGenderBreakdown', function(req, res) {
+
+  var BarMetrics = Parse.Object.extend("Metrics_DropIn");
+  var query = new Parse.Query(BarMetrics);
+  query.descending("date");
+  query.limit(1);
+  query.find({
+    success: function(results) {
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+        var genderArray = [];
+        var undefUsers = object.get('totalUsersUndef');
+        var femaleUsers = object.get('totalUsersFemale');
+        var maleUsers = object.get('totalUsersMale');
+        //res.success(object.get('totalUsersUndef'));
+
+        genderArray.push(undefUsers);
+        genderArray.push(femaleUsers);
+        genderArray.push(maleUsers);
+
+        res.success(genderArray);
+
+      }
+
+    },
+    error: function(error) {
+      res.error("Error: " + error.code + " " + error.message);
+    }
+  });
+
+});
+
+
 
 
 
