@@ -54,6 +54,8 @@ Parse.Cloud.define('dropInRewardsRedeemedToday', function(req, res) {
 });
 
 
+
+
 // drop in total users since v2
 
 Parse.Cloud.define('dropInTotalUsers', function(req, res) {
@@ -79,9 +81,10 @@ Parse.Cloud.define('dropInTotalUsers', function(req, res) {
 });
 
 
-// drop in total male users since v2
 
-Parse.Cloud.define('dropInTotalUsersMale', function(req, res) {
+// drop in tuser signups 
+
+Parse.Cloud.define('dropInUserSignups', function(req, res) {
 
   var BarMetrics = Parse.Object.extend("Metrics_DropIn");
   var query = new Parse.Query(BarMetrics);
@@ -91,8 +94,26 @@ Parse.Cloud.define('dropInTotalUsersMale', function(req, res) {
     success: function(results) {
       for (var i = 0; i < results.length; i++) {
         var object = results[i];
+        var userSignupArray = [];
+        var signup0 = object.get('userSignups');
+        var signup1 = object.get('userSignupsMinus1');
+        var signup2 = object.get('userSignupsMinus2');
+        var signup3 = object.get('userSignupsMinus3');
+        var signup4 = object.get('userSignupsMinus4');
+        var signup5 = object.get('userSignupsMinus5');
+        var signup6 = object.get('userSignupsMinus6');
+        //res.success(object.get('totalUsersUndef'));
 
-        res.success(object.get('totalUsersMale'));
+        userSignupArray.push(userSignups);
+        userSignupArray.push(userSignupsMinus1);
+        userSignupArray.push(userSignupsMinus2);
+        userSignupArray.push(userSignupsMinus3);
+        userSignupArray.push(userSignupsMinus4);
+        userSignupArray.push(userSignupsMinus5);
+        userSignupArray.push(userSignupsMinus6);
+
+        res.success(userSignupArray);
+
       }
 
     },
@@ -104,54 +125,8 @@ Parse.Cloud.define('dropInTotalUsersMale', function(req, res) {
 });
 
 
-// drop in total female users since v2
-
-Parse.Cloud.define('dropInTotalUsersFemale', function(req, res) {
-
-  var BarMetrics = Parse.Object.extend("Metrics_DropIn");
-  var query = new Parse.Query(BarMetrics);
-  query.descending("date");
-  query.limit(1);
-  query.find({
-    success: function(results) {
-      for (var i = 0; i < results.length; i++) {
-        var object = results[i];
-
-        res.success(object.get('totalUsersFemale'));
-      }
-
-    },
-    error: function(error) {
-      res.error("Error: " + error.code + " " + error.message);
-    }
-  });
-
-});
 
 
-// drop in total female users since v2
-
-Parse.Cloud.define('dropInTotalUsersUndef', function(req, res) {
-
-  var BarMetrics = Parse.Object.extend("Metrics_DropIn");
-  var query = new Parse.Query(BarMetrics);
-  query.descending("date");
-  query.limit(1);
-  query.find({
-    success: function(results) {
-      for (var i = 0; i < results.length; i++) {
-        var object = results[i];
-
-        res.success(object.get('totalUsersUndef'));
-      }
-
-    },
-    error: function(error) {
-      res.error("Error: " + error.code + " " + error.message);
-    }
-  });
-
-});
 
 
 // drop in total users gender breakdown since v2
