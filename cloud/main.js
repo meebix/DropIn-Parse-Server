@@ -81,8 +81,8 @@ Parse.Cloud.define('dropInTotalUsers', function(req, res) {
 });
 
 
-
-// drop in tuser signups 
+/*
+// drop in tuser signups
 
 Parse.Cloud.define('dropInUserSignups', function(req, res) {
 
@@ -124,7 +124,7 @@ Parse.Cloud.define('dropInUserSignups', function(req, res) {
 
 });
 
-
+*/
 
 
 
