@@ -102,6 +102,8 @@ Parse.Cloud.define('dropInUserSignups', function(req, res) {
         var signup4 = object.get('userSignupsMinus4');
         var signup5 = object.get('userSignupsMinus5');
         var signup6 = object.get('userSignupsMinus6');
+        var signup30 = object.get('userSignupsMinus30');
+        var signup60 = object.get('userSignupsMinus60');
         //res.success(object.get('totalUsersUndef'));
 
         userSignupArray.push(signup0);
@@ -111,6 +113,8 @@ Parse.Cloud.define('dropInUserSignups', function(req, res) {
         userSignupArray.push(signup4);
         userSignupArray.push(signup5);
         userSignupArray.push(signup6);
+        userSignupArray.push(signup30);
+        userSignupArray.push(signup60);
 
         res.success(userSignupArray);
 
