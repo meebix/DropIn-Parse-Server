@@ -20,13 +20,13 @@ Parse.Cloud.define('dropInRewardsEarnedRedeemedToday', function(req, res) {
         var rewardsEarnedRedeemArray = [];
 
         // earend check
-        var rewardsEarned0 = object.get('rewardsEarned');
-        var rewardsEarned1 = object.get('rewardsEarnedMinus1');
-        var rewardsEarned2 = object.get('rewardsEarnedMinus2');
-        var rewardsEarned3 = object.get('rewardsEarnedMinus3');
-        var rewardsEarned4 = object.get('rewardsEarnedMinus4');
-        var rewardsEarned5 = object.get('rewardsEarnedMinus5');
-        var rewardsEarned6 = object.get('rewardsEarnedMinus6');
+        var rewardEarned0 = object.get('rewardsEarned');
+        var rewardEarned1 = object.get('rewardsEarnedMinus1');
+        var rewardEarned2 = object.get('rewardsEarnedMinus2');
+        var rewardEarned3 = object.get('rewardsEarnedMinus3');
+        var rewardEarned4 = object.get('rewardsEarnedMinus4');
+        var rewardEarned5 = object.get('rewardsEarnedMinus5');
+        var rewardEarned6 = object.get('rewardsEarnedMinus6');
 
         var rewardsRedeemed0 = object.get('rewardsRedeemed');
         var rewardsRedeemed1 = object.get('rewardRedeemedMinus1');
@@ -38,13 +38,13 @@ Parse.Cloud.define('dropInRewardsEarnedRedeemedToday', function(req, res) {
 
 
 
-        rewardsEarnedRedeemArray.push(rewardsEarned0);
-        rewardsEarnedRedeemArray.push(rewardsEarned1);
-        rewardsEarnedRedeemArray.push(rewardsEarned2);
-        rewardsEarnedRedeemArray.push(rewardsEarned3);
-        rewardsEarnedRedeemArray.push(rewardsEarned4);
-        rewardsEarnedRedeemArray.push(rewardsEarned5);
-        rewardsEarnedRedeemArray.push(rewardsEarned6);
+        rewardsEarnedRedeemArray.push(rewardEarned0);
+        rewardsEarnedRedeemArray.push(rewardEarned1);
+        rewardsEarnedRedeemArray.push(rewardEarned2);
+        rewardsEarnedRedeemArray.push(rewardEarned3);
+        rewardsEarnedRedeemArray.push(rewardEarned4);
+        rewardsEarnedRedeemArray.push(rewardEarned5);
+        rewardsEarnedRedeemArray.push(rewardEarned6);
 
         rewardsEarnedRedeemArray.push(rewardsRedeemed0);
         rewardsEarnedRedeemArray.push(rewardsRedeemed1);
