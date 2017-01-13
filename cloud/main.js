@@ -3,10 +3,7 @@
 
 ///########### cloud code function for Drop In Insight ##############################
 
-
-// dropIn rewards earned today
-
-Parse.Cloud.define('dropInRewardsEarnedRedeemedToday', function(req, res) {
+Parse.Cloud.define('dropInRewardsEarned', function(req, res) {
 
   var BarMetrics = Parse.Object.extend("Metrics_DropIn");
   var query = new Parse.Query(BarMetrics);
@@ -17,16 +14,53 @@ Parse.Cloud.define('dropInRewardsEarnedRedeemedToday', function(req, res) {
       for (var i = 0; i < results.length; i++) {
         var object = results[i];
 
-        var rewardsEarnedRedeemArray = [];
+        var rewardsEarnedArray = [];
 
-        // earend check
-        var rewardEarned0 = object.get('rewardsEarned');
-        var rewardEarned1 = object.get('rewardsEarnedMinus1');
-        var rewardEarned2 = object.get('rewardsEarnedMinus2');
-        var rewardEarned3 = object.get('rewardsEarnedMinus3');
-        var rewardEarned4 = object.get('rewardsEarnedMinus4');
-        var rewardEarned5 = object.get('rewardsEarnedMinus5');
-        var rewardEarned6 = object.get('rewardsEarnedMinus6');
+
+        var rewardsEarned0 = object.get('rewardsEarned');
+        var rewardsEarned1 = object.get('rewardsEarnedMinus1');
+        var rewardsEarned2 = object.get('rewardsEarnedMinus2');
+        var rewardsEarned3 = object.get('rewardsEarnedMinus3');
+        var rewardsEarned4 = object.get('rewardsEarnedMinus4');
+        var rewardsEarned5 = object.get('rewardsEarnedMinus5');
+        var rewardsEarned6 = object.get('rewardsEarnedMinus6');
+
+
+        rewardsEarnedArray.push(rewardsEarned0);
+        rewardsEarnedArray.push(rewardsEarned1);
+        rewardsEarnedArray.push(rewardsEarned2);
+        rewardsEarnedArray.push(rewardsEarned3);
+        rewardsEarnedArray.push(rewardsEarned4);
+        rewardsEarnedArray.push(rewardsEarned5);
+        rewardsEarnedArray.push(rewardsEarned6);
+
+        res.success(rewardsEarnedArray);
+      }
+
+    },
+    error: function(error) {
+      res.error("Error: " + error.code + " " + error.message);
+    }
+  });
+
+});
+
+
+// dropIn rewards redeemed today
+
+Parse.Cloud.define('dropInRewardsRedeemed', function(req, res) {
+
+  var BarMetrics = Parse.Object.extend("Metrics_DropIn");
+  var query = new Parse.Query(BarMetrics);
+  query.descending("date");
+  query.limit(1);
+  query.find({
+    success: function(results) {
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+
+        var rewardsRedeemArray = [];
+
 
         var rewardsRedeemed0 = object.get('rewardsRedeemed');
         var rewardsRedeemed1 = object.get('rewardRedeemedMinus1');
@@ -37,24 +71,15 @@ Parse.Cloud.define('dropInRewardsEarnedRedeemedToday', function(req, res) {
         var rewardsRedeemed6 = object.get('rewardRedeemedMinus6');
 
 
-        rewardsEarnedRedeemArray.push(rewardsRedeemed0);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed1);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed2);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed3);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed4);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed5);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed6);
+        rewardsRedeemArray.push(rewardsRedeemed0);
+        rewardsRedeemArray.push(rewardsRedeemed1);
+        rewardsRedeemArray.push(rewardsRedeemed2);
+        rewardsRedeemArray.push(rewardsRedeemed3);
+        rewardsRedeemArray.push(rewardsRedeemed4);
+        rewardsRedeemArray.push(rewardsRedeemed5);
+        rewardsRedeemArray.push(rewardsRedeemed6);
 
-
-        rewardsEarnedRedeemArray.push(rewardEarned0);
-        rewardsEarnedRedeemArray.push(rewardEarned1);
-        rewardsEarnedRedeemArray.push(rewardEarned2);
-        rewardsEarnedRedeemArray.push(rewardEarned3);
-        rewardsEarnedRedeemArray.push(rewardEarned4);
-        rewardsEarnedRedeemArray.push(rewardEarned5);
-        rewardsEarnedRedeemArray.push(rewardEarned6);
-
-        res.success(rewardsEarnedRedeemArray);
+        res.success(rewardsRedeemArray);
       }
 
     },
