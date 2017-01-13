@@ -17,7 +17,7 @@ Parse.Cloud.define('dropInRewardsEarned', function(req, res) {
         var rewardsEarnedArray = [];
 
 
-        var rewardsEarned0 = object.get('rewardsEarned');
+        var rewardsEarned0 = object.get('userSignups');
         var rewardsEarned1 = object.get('rewardsEarnedMinus1');
         var rewardsEarned2 = object.get('rewardsEarnedMinus2');
         var rewardsEarned3 = object.get('rewardsEarnedMinus3');
