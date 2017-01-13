@@ -7,7 +7,7 @@ Parse.Cloud.define('dropInRewardsEarned', function(req, res) {
 
   var BarMetrics = Parse.Object.extend("Metrics_DropIn");
   var query = new Parse.Query(BarMetrics);
-  query.descending("date");
+  query.descending("createdAt");
   query.limit(1);
   query.find({
     success: function(results) {
@@ -52,7 +52,7 @@ Parse.Cloud.define('dropInRewardsRedeemed', function(req, res) {
 
   var BarMetrics = Parse.Object.extend("Metrics_DropIn");
   var query = new Parse.Query(BarMetrics);
-  query.descending("date");
+  query.descending("createdAt");
   query.limit(1);
   query.find({
     success: function(results) {
@@ -98,7 +98,7 @@ Parse.Cloud.define('dropInTotalUsers', function(req, res) {
 
   var BarMetrics = Parse.Object.extend("Metrics_DropIn");
   var query = new Parse.Query(BarMetrics);
-  query.descending("date");
+  query.descending("createdAt");
   query.limit(1);
   query.find({
     success: function(results) {
@@ -124,7 +124,7 @@ Parse.Cloud.define('dropInUserSignups', function(req, res) {
 
   var BarMetrics = Parse.Object.extend("Metrics_DropIn");
   var query = new Parse.Query(BarMetrics);
-  query.descending("date");
+  query.descending("createdAt");
   query.limit(1);
   query.find({
     success: function(results) {
@@ -175,7 +175,7 @@ Parse.Cloud.define('dropInGenderBreakdown', function(req, res) {
 
   var BarMetrics = Parse.Object.extend("Metrics_DropIn");
   var query = new Parse.Query(BarMetrics);
-  query.descending("date");
+  query.descending("createdAt");
   query.limit(1);
   query.find({
     success: function(results) {
