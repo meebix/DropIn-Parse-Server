@@ -19,6 +19,7 @@ Parse.Cloud.define('dropInRewardsEarnedRedeemedToday', function(req, res) {
 
         var rewardsEarnedRedeemArray = [];
 
+        // earend check
         var rewardsEarned0 = object.get('rewardsEarned');
         var rewardsEarned1 = object.get('rewardsEarnedMinus1');
         var rewardsEarned2 = object.get('rewardsEarnedMinus2');
@@ -52,7 +53,7 @@ Parse.Cloud.define('dropInRewardsEarnedRedeemedToday', function(req, res) {
         rewardsEarnedRedeemArray.push(rewardsRedeemed4);
         rewardsEarnedRedeemArray.push(rewardsRedeemed5);
         rewardsEarnedRedeemArray.push(rewardsRedeemed6);
-        
+
         res.success(rewardsEarnedRedeemArray);
       }
 
