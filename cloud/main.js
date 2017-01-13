@@ -37,6 +37,14 @@ Parse.Cloud.define('dropInRewardsEarnedRedeemedToday', function(req, res) {
         var rewardsRedeemed6 = object.get('rewardRedeemedMinus6');
 
 
+        rewardsEarnedRedeemArray.push(rewardsRedeemed0);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed1);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed2);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed3);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed4);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed5);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed6);
+
 
         rewardsEarnedRedeemArray.push(rewardEarned0);
         rewardsEarnedRedeemArray.push(rewardEarned1);
@@ -45,14 +53,6 @@ Parse.Cloud.define('dropInRewardsEarnedRedeemedToday', function(req, res) {
         rewardsEarnedRedeemArray.push(rewardEarned4);
         rewardsEarnedRedeemArray.push(rewardEarned5);
         rewardsEarnedRedeemArray.push(rewardEarned6);
-
-        rewardsEarnedRedeemArray.push(rewardsRedeemed0);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed1);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed2);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed3);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed4);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed5);
-        rewardsEarnedRedeemArray.push(rewardsRedeemed6);
 
         res.success(rewardsEarnedRedeemArray);
       }
