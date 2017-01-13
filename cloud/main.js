@@ -6,7 +6,7 @@
 
 // dropIn rewards earned today
 
-Parse.Cloud.define('dropInRewardsEarnedToday', function(req, res) {
+Parse.Cloud.define('dropInRewardsEarnedRedeemedToday', function(req, res) {
 
   var BarMetrics = Parse.Object.extend("Metrics_DropIn");
   var query = new Parse.Query(BarMetrics);
@@ -17,8 +17,43 @@ Parse.Cloud.define('dropInRewardsEarnedToday', function(req, res) {
       for (var i = 0; i < results.length; i++) {
         var object = results[i];
 
-        var rewardsEarnedToday = object.get('rewardsEarned');
-        res.success(rewardsEarnedToday);
+        var rewardsEarnedRedeemArray = [];
+
+        var rewardsEarned0 = object.get('rewardsEarned');
+        var rewardsEarned1 = object.get('rewardsEarnedMinus1');
+        var rewardsEarned2 = object.get('rewardsEarnedMinus2');
+        var rewardsEarned3 = object.get('rewardsEarnedMinus3');
+        var rewardsEarned4 = object.get('rewardsEarnedMinus4');
+        var rewardsEarned5 = object.get('rewardsEarnedMinus5');
+        var rewardsEarned6 = object.get('rewardsEarnedMinus6');
+
+        var rewardsRedeemed0 = object.get('rewardsRedeemed');
+        var rewardsRedeemed1 = object.get('rewardRedeemedMinus1');
+        var rewardsRedeemed2 = object.get('rewardRedeemedMinus2');
+        var rewardsRedeemed3 = object.get('rewardRedeemedMinus3');
+        var rewardsRedeemed4 = object.get('rewardRedeemedMinus4');
+        var rewardsRedeemed5 = object.get('rewardRedeemedMinus5');
+        var rewardsRedeemed6 = object.get('rewardRedeemedMinus6');
+
+
+
+        rewardsEarnedRedeemArray.push(rewardsEarned0);
+        rewardsEarnedRedeemArray.push(rewardsEarned1);
+        rewardsEarnedRedeemArray.push(rewardsEarned2);
+        rewardsEarnedRedeemArray.push(rewardsEarned3);
+        rewardsEarnedRedeemArray.push(rewardsEarned4);
+        rewardsEarnedRedeemArray.push(rewardsEarned5);
+        rewardsEarnedRedeemArray.push(rewardsEarned6);
+
+        rewardsEarnedRedeemArray.push(rewardsRedeemed0);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed1);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed2);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed3);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed4);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed5);
+        rewardsEarnedRedeemArray.push(rewardsRedeemed6);
+        
+        res.success(rewardsEarnedRedeemArray);
       }
 
     },
@@ -28,31 +63,6 @@ Parse.Cloud.define('dropInRewardsEarnedToday', function(req, res) {
   });
 
 });
-
-// drop in rewards redeemed today
-
-Parse.Cloud.define('dropInRewardsRedeemedToday', function(req, res) {
-
-  var BarMetrics = Parse.Object.extend("Metrics_DropIn");
-  var query = new Parse.Query(BarMetrics);
-  query.descending("date");
-  query.limit(1);
-  query.find({
-    success: function(results) {
-      for (var i = 0; i < results.length; i++) {
-        var object = results[i];
-
-        res.success(object.get('rewardsRedeemed'));
-      }
-
-    },
-    error: function(error) {
-      res.error("Error: " + error.code + " " + error.message);
-    }
-  });
-
-});
-
 
 
 
@@ -167,13 +177,5 @@ Parse.Cloud.define('dropInGenderBreakdown', function(req, res) {
 
 });
 
-
-
-
-
-//comment
-Parse.Cloud.define('hello', function(req, res) {
-  res.success('Hi its nickaroo');
-});
 
 ///########### cloud code function for Drop In Insight ##############################
