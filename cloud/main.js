@@ -17,13 +17,13 @@ Parse.Cloud.define('dropInRewardsEarned', function(req, res) {
         var rewardsRedeemArray = [];
 
 
-        var rewardsRedeemed0 = object.get('rewardsRedeemed');
-        var rewardsRedeemed1 = object.get('rewardRedeemedMinus1');
-        var rewardsRedeemed2 = object.get('rewardRedeemedMinus2');
-        var rewardsRedeemed3 = object.get('rewardRedeemedMinus3');
-        var rewardsRedeemed4 = object.get('rewardRedeemedMinus4');
-        var rewardsRedeemed5 = object.get('rewardRedeemedMinus5');
-        var rewardsRedeemed6 = object.get('rewardRedeemedMinus6');
+        var rewardsRedeemed0 = object.get('rewardsEarned');
+        var rewardsRedeemed1 = object.get('rewardsEarnedMinus1');
+        var rewardsRedeemed2 = object.get('rewardsEarnedMinus2');
+        var rewardsRedeemed3 = object.get('rewardsEarnedMinus3');
+        var rewardsRedeemed4 = object.get('rewardsEarnedMinus4');
+        var rewardsRedeemed5 = object.get('rewardsEarnedMinus5');
+        var rewardsRedeemed6 = object.get('rewardsEarnedMinus6');
 
 
         rewardsRedeemArray.push(rewardsRedeemed0);
