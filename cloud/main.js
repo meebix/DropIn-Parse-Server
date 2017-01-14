@@ -24,7 +24,7 @@ Parse.Cloud.define('dropInRewardsEarned', function(req, res) {
         var rewardsEarned4 = object.get('rewardsEarnedMinus4');
         var rewardsEarned5 = object.get('rewardsEarnedMinus5');
         var rewardsEarned6 = object.get('rewardsEarnedMinus6');
-        var rewardsEarned30 = object.get('monthlyRewardEarned');
+        var rewardsEarned30 = object.get('monthlyRewardsEarned');
         var rewardsEarnedLife = object.get('lifetimeRewardsEarned');
 
 
