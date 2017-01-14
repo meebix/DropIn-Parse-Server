@@ -239,7 +239,7 @@ Parse.Cloud.define('venues', function(req, res) {
           barArrayInactive.push(isActiveTemp);
 
         }
-
+        
 
 
       }
@@ -255,26 +255,6 @@ Parse.Cloud.define('venues', function(req, res) {
       res.error("Error: " + error.code + " " + error.message);
     }
   });
-
-
-
-
-  /*
-  var BarCount = Parse.Object.extend("Bar");
-  var query = new Parse.Query(BarCount);
-  query.equalTo("isActive", true);
-  query.count({
-  success: function(count) {
-  //view for the bar
-  res.success(count);
-
-  //getTodaysRedeemedRewardsEarned();
-},
-error: function(error) {
-// The request failed
-}
-});
-*/
 
 });
 
