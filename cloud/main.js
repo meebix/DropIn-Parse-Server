@@ -24,7 +24,7 @@ Parse.Cloud.define('dropInRewardsEarned', function(req, res) {
         var rewardsEarned4 = object.get('rewardsEarnedMinus4');
         var rewardsEarned5 = object.get('rewardsEarnedMinus5');
         var rewardsEarned6 = object.get('rewardsEarnedMinus6');
-        var rewardsEarned30 = object.get('monthlyRewardsEarned');
+        var rewardsEarned30 = object.get('monthlyRewardEarned');
         var rewardsEarnedLife = object.get('lifetimeRewardsEarned');
 
 
@@ -84,8 +84,8 @@ Parse.Cloud.define('dropInRewardsRedeemed', function(req, res) {
         rewardsRedeemArray.push(rewardsRedeemed4);
         rewardsRedeemArray.push(rewardsRedeemed5);
         rewardsRedeemArray.push(rewardsRedeemed6);
-        rewardsRedeemArray.push(rewardsRedeemed30);
-        rewardsRedeemArray.push(rewardsRedeemedLife);
+        rewardsRedeemArray.push(rewardsRedeemed6);
+        rewardsRedeemArray.push(rewardsRedeemed6);
 
         res.success(rewardsRedeemArray);
       }
@@ -208,6 +208,73 @@ Parse.Cloud.define('dropInGenderBreakdown', function(req, res) {
       res.error("Error: " + error.code + " " + error.message);
     }
   });
+
+});
+
+
+Parse.Cloud.define('venues', function(req, res) {
+
+  var barArray = [];
+  var barArrayActive = [];
+  var barArrayInactive = [];
+
+  var BarCount = Parse.Object.extend("Bar");
+  var query = new Parse.Query(BarCount);
+  query.equalTo("isActive", true);
+  query.find({
+    success: function(results) {
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+
+
+        var isActiveTemp = object.get('isActive');
+
+
+        if (isActiveTemp == true) {
+
+          barArrayActive.push(isActiveTemp);
+        }
+        else {
+
+          barArrayInactive.push(isActiveTemp);
+
+        }
+
+
+
+      }
+
+      var activeCount = barArrayActive.length;
+      var inactiveCount = barArrayInactive.length;
+      barArray.push(activeCount);
+      barArray.push(inactiveCount);
+      res.success(barArray);
+
+    },
+    error: function(error) {
+      res.error("Error: " + error.code + " " + error.message);
+    }
+  });
+
+
+
+
+  /*
+  var BarCount = Parse.Object.extend("Bar");
+  var query = new Parse.Query(BarCount);
+  query.equalTo("isActive", true);
+  query.count({
+  success: function(count) {
+  //view for the bar
+  res.success(count);
+
+  //getTodaysRedeemedRewardsEarned();
+},
+error: function(error) {
+// The request failed
+}
+});
+*/
 
 });
 
