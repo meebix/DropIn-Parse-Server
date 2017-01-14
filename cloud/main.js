@@ -84,8 +84,8 @@ Parse.Cloud.define('dropInRewardsRedeemed', function(req, res) {
         rewardsRedeemArray.push(rewardsRedeemed4);
         rewardsRedeemArray.push(rewardsRedeemed5);
         rewardsRedeemArray.push(rewardsRedeemed6);
-        rewardsRedeemArray.push(rewardsRedeemed6);
-        rewardsRedeemArray.push(rewardsRedeemed6);
+        rewardsRedeemArray.push(rewardsRedeemed30);
+        rewardsRedeemArray.push(rewardsRedeemedLife);
 
         res.success(rewardsRedeemArray);
       }
