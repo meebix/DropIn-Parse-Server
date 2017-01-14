@@ -220,7 +220,6 @@ Parse.Cloud.define('venues', function(req, res) {
 
   var BarCount = Parse.Object.extend("Bar");
   var query = new Parse.Query(BarCount);
-  query.equalTo("isActive", true);
   query.find({
     success: function(results) {
       for (var i = 0; i < results.length; i++) {
@@ -239,7 +238,7 @@ Parse.Cloud.define('venues', function(req, res) {
           barArrayInactive.push(isActiveTemp);
 
         }
-        
+
 
 
       }
