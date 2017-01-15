@@ -259,4 +259,43 @@ Parse.Cloud.define('venues', function(req, res) {
 
 
 
+
+Parse.Cloud.define('activeUserMetrics', function(req, res) {
+
+  var BarMetrics = Parse.Object.extend("Metrics_DropIn");
+  var query = new Parse.Query(BarMetrics);
+  query.descending("createdAt");
+  query.limit(1);
+  query.find({
+    success: function(results) {
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+        var activeUserMetricArray = [];
+        var monActiveUsers = object.get('monthlyActiveUsers');
+        var monRepeatUsers = object.get('monthlyRepeatUsers');
+        var monthRewardsUniq = object.get('monthlyRewardsEarnedUniq');
+        var earnedRewardRedeemUniq = object.get('earnedRwdsRedeemMonthlyUniq');
+        var earnedRewardRedeem = object.get('earnedRewardsRedeemedMonthly');
+        //res.success(object.get('totalUsersUndef'));
+
+        activeUserMetricArray.push(monActiveUsers);
+        activeUserMetricArray.push(monRepeatUsers);
+        activeUserMetricArray.push(monthRewardsUniq);
+        activeUserMetricArray.push(earnedRewardRedeemUniq);
+        activeUserMetricArray.push(earnedRewardRedeem);
+
+        res.success(activeUserMetricArray);
+
+      }
+
+    },
+    error: function(error) {
+      res.error("Error: " + error.code + " " + error.message);
+    }
+  });
+
+});
+
+
+
 ///########### cloud code function for Drop In Insight ##############################
