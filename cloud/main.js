@@ -297,5 +297,50 @@ Parse.Cloud.define('activeUserMetrics', function(req, res) {
 });
 
 
+Parse.Cloud.define('barMetrics', function(req, res) {
+
+  var todaysDate = new Date();
+  todaysDate.setHours(1,0,0,0);
+
+  var BarMetrics = Parse.Object.extend("Metrics_Bars");
+  var query = new Parse.Query(BarMetrics);
+  query.greaterThanOrEqualTo("date", todaysDate);
+  query.include("barId");
+  query.find({
+    success: function(results) {
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+
+        var barMetricsArray = [];
+
+        var barName =  object.get('barId').get('name');
+        var rewardsToday = object.get('rewardsEarned');
+        var earnedRewardsRedeemedToday = object.get('earnedRewardsRedeemed');
+        var rewardsRedeemedToday = object.get('rewardsRedeemed');
+        var monthlyRewardsEarnedUniq = object.get('monthlyRewardsEarnedUniq');
+        var earnedRewardsRedeemedMonthlyUniq = object.get('earnedRwdsRedeemdMonthlyUniq');
+        var earnedRewardsRedeemedMonthly = object.get('earnedRewardsRedeemedMonthly');
+        var monthlyRewardsEarned = object.get('monthlyRewardsEarned');
+        var lifetimeRewardsEarned = object.get('lifetimeRewardsEarned');
+        var monthlyActiveUsers = object.get('monthlyActiveUsers');
+        var lifetimeActiveUsers = object.get('lifetimeActiveUsers');
+
+        //res.success(object.get('totalUsersUndef'));
+
+        barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers]);
+
+      }
+
+      res.success(barMetricsArray);
+
+    },
+    error: function(error) {
+      res.error("Error: " + error.code + " " + error.message);
+    }
+  });
+
+});
+
+
 
 ///########### cloud code function for Drop In Insight ##############################
