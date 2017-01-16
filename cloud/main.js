@@ -302,16 +302,18 @@ Parse.Cloud.define('barMetrics', function(req, res) {
   var todaysDate = new Date();
   todaysDate.setHours(0,0,0,0);
 
+  var barMetricsArray = [];
+
   var BarMetrics = Parse.Object.extend("Metrics_Bars");
   var query = new Parse.Query(BarMetrics);
-  //query.greaterThanOrEqualTo("date", todaysDate);
+  query.greaterThanOrEqualTo("date", todaysDate);
   query.include("barId");
   query.find({
     success: function(results) {
       for (var i = 0; i < results.length; i++) {
         var object = results[i];
 
-        var barMetricsArray = [];
+
 
         var barName =  object.get('barId').get('name');
         var rewardsToday = object.get('rewardsEarned');
