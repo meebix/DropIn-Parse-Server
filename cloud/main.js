@@ -327,7 +327,10 @@ Parse.Cloud.define('barMetrics', function(req, res) {
 
         //res.success(object.get('totalUsersUndef'));
 
-        barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
+        var temp = {barName:barName, rewardsToday:rewardsToday, earnedRewardsRedeemedToday:earnedRewardsRedeemedToday,rewardsRedeemedToday:rewardsRedeemedToday, monthlyRewardsEarnedUniq:monthlyRewardsEarnedUniq, earnedRewardsRedeemedMonthlyUniq:earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly:earnedRewardsRedeemedMonthly, monthlyRewardsEarned:monthlyRewardsEarned, lifetimeRewardsEarned: lifetimeRewardsEarned,monthlyActiveUsers:monthlyActiveUsers, lifetimeActiveUsers:lifetimeActiveUsers};
+
+        barMetricsArray.push(temp);
+        //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
 
       }
 
