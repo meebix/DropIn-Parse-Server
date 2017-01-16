@@ -300,7 +300,7 @@ Parse.Cloud.define('activeUserMetrics', function(req, res) {
 Parse.Cloud.define('barMetrics', function(req, res) {
 
   var todaysDate = new Date();
-  todaysDate.setHours(1,0,0,0);
+  todaysDate.setHours(0,0,0,0);
 
   var BarMetrics = Parse.Object.extend("Metrics_Bars");
   var query = new Parse.Query(BarMetrics);
