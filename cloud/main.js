@@ -299,8 +299,24 @@ Parse.Cloud.define('activeUserMetrics', function(req, res) {
 
 Parse.Cloud.define('barMetrics', function(req, res) {
 
-  var todaysDate = new Date();
-  todaysDate.setHours(0,0,0,0);
+  var d = new Date(); // for now
+  var hour = d.getHours();
+
+  if (hour > 5) {
+
+    var todaysDate = new Date();
+    todaysDate.setHours(0,0,0,0);
+
+  }
+
+  else {
+
+    var todaysDate = new Date();
+    todaysDate.setDate(todaysDate.getDate() - 1);
+    todaysDate.setHours(0,0,0,0);
+
+  }
+
 
   var barMetricsArray = [];
 
