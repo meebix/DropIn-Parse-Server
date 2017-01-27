@@ -1,4 +1,37 @@
+///########### Push notifications for Drop In ##############################
 
+Parse.Cloud.define("pushToAll", function(request, response) {
+  var message = request.params.message;
+  if (message != null && message !== "") {
+    message = message.trim();
+  } else {
+    response.error("Must provide \"message\" in JSON data");
+    return;
+  }
+
+  var pushQuery = new Parse.Query(Parse.Installation);
+  // pushQuery.containedIn("deviceType", ["ios", "android"]); // errors if no iOS certificate
+
+  // Send push notification to query
+  Parse.Push.send({
+    where: pushQuery, // Set our installation query
+    data: {
+      alert: message,
+      badge: 1,
+      sound: 'default'
+    }
+  }, {
+    useMasterKey: true,
+    success: function() {
+      // Push was successful
+      console.log("Message was sent successfully");
+      response.success('true');
+    },
+    error: function(error) {
+      response.error(error);
+    }
+  });
+});
 
 
 ///########### cloud code function for Drop In Insight ##############################
