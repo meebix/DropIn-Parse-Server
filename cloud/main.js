@@ -17,7 +17,7 @@ Parse.Cloud.define("pushToAll", function(request, response) {
     where: pushQuery, // Set our installation query
     data: {
       alert: message,
-      badge: Increment,
+      badge: "Increment",
       sound: 'default'
     }
   }, {
@@ -44,7 +44,7 @@ Parse.Cloud.define("incrementBadge", function(request, response) {
   Parse.Push.send({
     where: pushQuery, // Set our installation query
     data: {
-      badge: Increment,
+      badge: "Increment",
       sound: 'default'
     }
   }, {
