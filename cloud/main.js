@@ -338,6 +338,7 @@ Parse.Cloud.define('activeUserMetrics', function(req, res) {
         var earnedRewardRedeemUniq = object.get('earnedRwdsRedeemMonthlyUniq');
         var earnedRewardRedeem = object.get('earnedRewardsRedeemedMonthly');
         var lifeRepeatUsers = object.get('lifetimeRepeatUsers');
+        var lifeActiveUsers = object.get('lifetimeActiveUsers');
         //res.success(object.get('totalUsersUndef'));
 
         activeUserMetricArray.push(monActiveUsers);
@@ -346,6 +347,7 @@ Parse.Cloud.define('activeUserMetrics', function(req, res) {
         activeUserMetricArray.push(earnedRewardRedeemUniq);
         activeUserMetricArray.push(earnedRewardRedeem);
         activeUserMetricArray.push(lifeRepeatUsers);
+        activeUserMetricArray.push(lifeActiveUsers);
 
         res.success(activeUserMetricArray);
 
