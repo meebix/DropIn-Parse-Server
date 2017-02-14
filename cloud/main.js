@@ -410,9 +410,11 @@ Parse.Cloud.define('barMetrics', function(req, res) {
         var lifeRepeatUsers = object.get('lifetimeRepeatUsers');
         var monRepeatUsers = object.get('monthlyRepeatUsers');
 
+        var monthlyRewardsRedeemed = object.get('monthlyRewardsRedeemed');
+
         //res.success(object.get('totalUsersUndef'));
 
-        var temp = {barName:barName, lifetimeRepeatUser:lifeRepeatUsers, monthlyRepeatUsers:monRepeatUsers, rewardsToday:rewardsToday, earnedRewardsRedeemedToday:earnedRewardsRedeemedToday,rewardsRedeemedToday:rewardsRedeemedToday, monthlyRewardsEarnedUniq:monthlyRewardsEarnedUniq, earnedRewardsRedeemedMonthlyUniq:earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly:earnedRewardsRedeemedMonthly, monthlyRewardsEarned:monthlyRewardsEarned, lifetimeRewardsEarned: lifetimeRewardsEarned,monthlyActiveUsers:monthlyActiveUsers, lifetimeActiveUsers:lifetimeActiveUsers};
+        var temp = {barName:barName, monthlyRewardsRedeemed: monthlyRewardsRedeemed, lifetimeRepeatUser:lifeRepeatUsers, monthlyRepeatUsers:monRepeatUsers, rewardsToday:rewardsToday, earnedRewardsRedeemedToday:earnedRewardsRedeemedToday,rewardsRedeemedToday:rewardsRedeemedToday, monthlyRewardsEarnedUniq:monthlyRewardsEarnedUniq, earnedRewardsRedeemedMonthlyUniq:earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly:earnedRewardsRedeemedMonthly, monthlyRewardsEarned:monthlyRewardsEarned, lifetimeRewardsEarned: lifetimeRewardsEarned,monthlyActiveUsers:monthlyActiveUsers, lifetimeActiveUsers:lifetimeActiveUsers};
 
         barMetricsArray.push(temp);
         //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
