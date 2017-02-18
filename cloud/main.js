@@ -470,8 +470,6 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
 
 
         var barName =  object.get('barId').get('name');
-        var rewardsEarnedToday = object.get('rewardsEarned');
-        var rewardsRedeemToday = object.get('rewardsEarned');
         var rwdRedeemWeekUniq = object.get('rewardsRedeemedWeekUniq');
         var rwdEarnedWeekUniq = object.get('rewardsEarnedWeekUniq');
         var rwdRedeemWeek = object.get('rewardsRedeemedWeekUniq');
@@ -493,9 +491,20 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
         var rwdRedeemMinus6 = object.get('rewardRedeemedMinus6');
         var rwdRedeemMinus7 = object.get('rewardRedeemedMinus7');
 
+        var lifeTimeVisits = object.get('lifetimeRewardsEarned');
+
         //res.success(object.get('totalUsersUndef'));
 
-        var temp = {barName:barName,rewardEarnedMinus7: rwdEarnedMinus7,rewardEarnedMinus6: rwdEarnedMinus6,rewardEarnedMinus5: rwdEarnedMinus5,rewardEarnedMinus4: rwdEarnedMinus4,rewardEarnedMinus3: rwdEarnedMinus3,rewardEarnedMinus2: rwdEarnedMinus2,rewardEarnedMinus1: rwdEarnedMinus1, rewardRedeemMinus7: rwdRedeemMinus7,rewardRedeemMinus6: rwdRedeemMinus6,rewardRedeemMinus5: rwdRedeemMinus5,rewardRedeemMinus4: rwdRedeemMinus4,rewardRedeemMinus3: rwdRedeemMinus3, rewardRedeemMinus2: rwdRedeemMinus2,rewardRedeemMinus1: rwdRedeemMinus1, rewardEarnedToday: rewardsEarnedToday, rewardsRedeemdToday:rewardsRedeemToday, rewardsRedeemedWeekUniq: rwdRedeemWeekUniq, rewardsEarnedWeekUniq: rwdEarnedWeekUniq, rewardsRedeemedWeek: rwdRedeemWeek, rewardsEarnedWeek: rwdEarnedWeek};
+        var temp = {lifeTimeVisits:lifeTimeVisits, barName:barName,rewardEarnedMinus7: rwdEarnedMinus7,
+          rewardEarnedMinus6: rwdEarnedMinus6,rewardEarnedMinus5: rwdEarnedMinus5,
+          rewardEarnedMinus4: rwdEarnedMinus4,rewardEarnedMinus3: rwdEarnedMinus3,
+          rewardEarnedMinus2: rwdEarnedMinus2,rewardEarnedMinus1: rwdEarnedMinus1,
+          rewardRedeemMinus7: rwdRedeemMinus7,rewardRedeemMinus6: rwdRedeemMinus6,
+          rewardRedeemMinus5: rwdRedeemMinus5,rewardRedeemMinus4: rwdRedeemMinus4,
+          rewardRedeemMinus3: rwdRedeemMinus3, rewardRedeemMinus2: rwdRedeemMinus2,
+          rewardRedeemMinus1: rwdRedeemMinus1,rewardsRedeemedWeekUniq: rwdRedeemWeekUniq,
+          rewardsEarnedWeekUniq: rwdEarnedWeekUniq, rewardsRedeemedWeek: rwdRedeemWeek,
+          rewardsEarnedWeek: rwdEarnedWeek};
 
         barMetricsArray.push(temp);
         //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
