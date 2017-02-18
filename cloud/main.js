@@ -367,7 +367,7 @@ Parse.Cloud.define('barMetrics', function(req, res) {
   var d = new Date(); // for now
   var hour = d.getHours();
 
-  if (hour > 5) {
+  if (hour > 9) {
 
     var todaysDate = new Date();
     todaysDate.setHours(0,0,0,0);
@@ -415,6 +415,87 @@ Parse.Cloud.define('barMetrics', function(req, res) {
         //res.success(object.get('totalUsersUndef'));
 
         var temp = {barName:barName, monthlyRewardsRedeemed: monthlyRewardsRedeemed, lifetimeRepeatUser:lifeRepeatUsers, monthlyRepeatUsers:monRepeatUsers, rewardsToday:rewardsToday, earnedRewardsRedeemedToday:earnedRewardsRedeemedToday,rewardsRedeemedToday:rewardsRedeemedToday, monthlyRewardsEarnedUniq:monthlyRewardsEarnedUniq, earnedRewardsRedeemedMonthlyUniq:earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly:earnedRewardsRedeemedMonthly, monthlyRewardsEarned:monthlyRewardsEarned, lifetimeRewardsEarned: lifetimeRewardsEarned,monthlyActiveUsers:monthlyActiveUsers, lifetimeActiveUsers:lifetimeActiveUsers};
+
+        barMetricsArray.push(temp);
+        //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
+
+      }
+
+      res.success(barMetricsArray);
+
+    },
+    error: function(error) {
+      res.error("Error: " + error.code + " " + error.message);
+    }
+  });
+
+});
+
+
+
+Parse.Cloud.define('barDashboardMetrics', function(req, res) {
+
+  var d = new Date(); // for now
+  var hour = d.getHours();
+
+  if (hour > 9) {
+
+    var todaysDate = new Date();
+    todaysDate.setHours(0,0,0,0);
+
+  }
+
+  else {
+
+    var todaysDate = new Date();
+    todaysDate.setDate(todaysDate.getDate() - 1);
+    todaysDate.setHours(0,0,0,0);
+
+  }
+
+  var BarPointer = Parse.Object.extend("Bar");
+
+  var barMetricsArray = [];
+
+  var BarMetrics = Parse.Object.extend("Metrics_Bars");
+  var query = new Parse.Query(BarMetrics);
+  query.equalTo("barId", new BarPointer({id: req.params.barId}));
+  query.greaterThanOrEqualTo("date", todaysDate);
+  query.include("barId");
+  query.find({
+    success: function(results) {
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+
+
+
+        var barName =  object.get('barId').get('name');
+        var rewardsEarnedToday = object.get('rewardsEarned');
+        var rewardsRedeemToday = object.get('rewardsEarned');
+        var rwdRedeemWeekUniq = object.get('rewardsRedeemedWeekUniq');
+        var rwdEarnedWeekUniq = object.get('rewardsEarnedWeekUniq');
+        var rwdRedeemWeek = object.get('rewardsRedeemedWeekUniq');
+        var rwdEarnedWeek = object.get('rewardsEarnedWeekUniq');
+
+        var rwdEarnedMinus1 = object.get('rewardsEarnedMinus1');
+        var rwdEarnedMinus2 = object.get('rewardsEarnedMinus2');
+        var rwdEarnedMinus3 = object.get('rewardsEarnedMinus3');
+        var rwdEarnedMinus4 = object.get('rewardsEarnedMinus4');
+        var rwdEarnedMinus5 = object.get('rewardsEarnedMinus5');
+        var rwdEarnedMinus6 = object.get('rewardsEarnedMinus6');
+        var rwdEarnedMinus7 = object.get('rewardsEarnedMinus7');
+
+        var rwdRedeemMinus1 = object.get('rewardRedeemedMinus1');
+        var rwdRedeemMinus2 = object.get('rewardRedeemedMinus2');
+        var rwdRedeemMinus3 = object.get('rewardRedeemedMinus3');
+        var rwdRedeemMinus4 = object.get('rewardRedeemedMinus4');
+        var rwdRedeemMinus5 = object.get('rewardRedeemedMinus5');
+        var rwdRedeemMinus6 = object.get('rewardRedeemedMinus6');
+        var rwdRedeemMinus7 = object.get('rewardRedeemedMinus7');
+
+        //res.success(object.get('totalUsersUndef'));
+
+        var temp = {barName:barName,rewardEarnedMinus7: rwdEarnedMinus7,rewardEarnedMinus6: rwdEarnedMinus6,rewardEarnedMinus5: rwdEarnedMinus5,rewardEarnedMinus4: rwdEarnedMinus4,rewardEarnedMinus3: rwdEarnedMinus3,rewardEarnedMinus2: rwdEarnedMinus2,rewardEarnedMinus1: rwdEarnedMinus1, rewardRedeemMinus7: rwdRedeemMinus7,rewardRedeemMinus6: rwdRedeemMinus6,rewardRedeemMinus5: rwdRedeemMinus5,rewardRedeemMinus4: rwdRedeemMinus4,rewardRedeemMinus3: rwdRedeemMinus3, rewardRedeemMinus2: rwdRedeemMinus2,rewardRedeemMinus1: rwdRedeemMinus1, rewardEarnedToday: rewardsEarnedToday, rewardsRedeemdToday:rewardsRedeemToday, rewardsRedeemedWeekUniq: rwdRedeemWeekUniq, rewardsEarnedWeekUniq: rwdEarnedWeekUniq, rewardsRedeemedWeek: rwdRedeemWeek, rewardsEarnedWeek: rwdEarnedWeek};
 
         barMetricsArray.push(temp);
         //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
