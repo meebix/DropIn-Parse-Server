@@ -431,7 +431,7 @@ Parse.Cloud.define('barMetrics', function(req, res) {
 
 });
 
-
+// for bar metrics
 
 Parse.Cloud.define('barDashboardMetrics', function(req, res) {
 
