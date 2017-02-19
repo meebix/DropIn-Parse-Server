@@ -494,10 +494,34 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
         var lifeTimeVisits = object.get('lifetimeRewardsEarned');
         var lifeTimeRedemption = object.get('lifetimeRewardsRedeemed');
 
+        var lifetimeRewardsRedeemMon = object.get('lifetimeRewardsEarnedMon');
+        var lifetimeRewardsEarnedTue = object.get('lifetimeRewardsEarnedTue');
+        var lifetimeRewardsEarnedWed = object.get('lifetimeRewardsEarnedWed');
+        var lifetimeRewardsEarnedThu = object.get('lifetimeRewardsEarnedThu');
+        var lifetimeRewardsEarnedFri = object.get('lifetimeRewardsEarnedFri');
+        var lifetimeRewardsEarnedSat = object.get('lifetimeRewardsEarnedSat');
+        var lifetimeRewardsEarnedSun = object.get('lifetimeRewardsEarnedSun');
+
+        var lifetimeRewardsRedeemMon = object.get('lifetimeRewardsRedeemMon');
+        var lifetimeRewardsRedeemTue = object.get('lifetimeRewardsRedeemTue');
+        var lifetimeRewardsRedeemWed = object.get('lifetimeRewardsRedeemWed');
+        var lifetimeRewardsRedeemThu = object.get('lifetimeRewardsRedeemThu');
+        var lifetimeRewardsRedeemFri = object.get('lifetimeRewardsRedeemFri');
+        var lifetimeRewardsRedeemSat = object.get('lifetimeRewardsRedeemSat');
+        var lifetimeRewardsRedeemSun = object.get('lifetimeRewardsRedeemSun');
+
         //res.success(object.get('totalUsersUndef'));
 
         var temp = {lifeTimeRedemption:lifeTimeRedemption, lifeTimeVisits:lifeTimeVisits,
           barName:barName,rewardEarnedMinus7: rwdEarnedMinus7,
+          lifetimeRewardsRedeemMon:lifetimeRewardsRedeemMon, lifetimeRewardsRedeemTue:lifetimeRewardsRedeemTue,
+          lifetimeRewardsRedeemWed:lifetimeRewardsRedeemWed, lifetimeRewardsRedeemThu:lifetimeRewardsRedeemThu,
+          lifetimeRewardsRedeemFri:lifetimeRewardsRedeemFri, lifetimeRewardsRedeemSat:lifetimeRewardsRedeemSat,
+          lifetimeRewardsRedeemSun:lifetimeRewardsRedeemSun,
+          lifetimeRewardsEarnedMon:lifetimeRewardsEarnedMon, lifetimeRewardsEarnedTue:lifetimeRewardsEarnedTue,
+          lifetimeRewardsEarnedWed:lifetimeRewardsEarnedWed, lifetimeRewardsEarnedThu:lifetimeRewardsEarnedThu,
+          lifetimeRewardsEarnedFri:lifetimeRewardsEarnedFri, lifetimeRewardsEarnedSat:lifetimeRewardsEarnedSat,
+          lifetimeRewardsEarnedSun:lifetimeRewardsEarnedSun, 
           rewardEarnedMinus6: rwdEarnedMinus6,rewardEarnedMinus5: rwdEarnedMinus5,
           rewardEarnedMinus4: rwdEarnedMinus4,rewardEarnedMinus3: rwdEarnedMinus3,
           rewardEarnedMinus2: rwdEarnedMinus2,rewardEarnedMinus1: rwdEarnedMinus1,
