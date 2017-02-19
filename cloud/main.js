@@ -582,12 +582,32 @@ Parse.Cloud.define('barDashboardDropInMetrics', function(req, res) {
 
 
         var rewardsEarnedDropIn = object.get('rewardsEarned');
+        var rewardsEarnedDropIn1 = object.get('rewardsEarnedMinus1');
+        var rewardsEarnedDropIn2 = object.get('rewardsEarnedMinus2');
+        var rewardsEarnedDropIn3 = object.get('rewardsEarnedMinus3');
+        var rewardsEarnedDropIn4 = object.get('rewardsEarnedMinus4');
+        var rewardsEarnedDropIn5 = object.get('rewardsEarnedMinus5');
+        var rewardsEarnedDropIn6 = object.get('rewardsEarnedMinus6');
+
+
         var rewardsRedeemedDropIn = object.get('rewardsRedeemed');
+        var rewardsRedeemedDropIn1 = object.get('rewardRedeemedMinus1');
+        var rewardsRedeemedDropIn2 = object.get('rewardRedeemedMinus2');
+        var rewardsRedeemedDropIn3 = object.get('rewardRedeemedMinus3');
+        var rewardsRedeemedDropIn4 = object.get('rewardRedeemedMinus4');
+        var rewardsRedeemedDropIn5 = object.get('rewardRedeemedMinus5');
+        var rewardsRedeemedDropIn6 = object.get('rewardRedeemedMinus6');
 
 
         //res.success(object.get('totalUsersUndef'));
 
-        var temp = {rewardsEarnedDropIn:rewardsEarnedDropIn, rewardsRedeemedDropIn:rewardsRedeemedDropIn};
+        var temp = {rewardsEarnedDropIn:rewardsEarnedDropIn, rewardsRedeemedDropIn:rewardsRedeemedDropIn,
+                    rewardsEarnedDropIn1:rewardsEarnedDropIn1, rewardsEarnedDropIn2:rewardsEarnedDropIn2,
+                    rewardsEarnedDropIn3:rewardsEarnedDropIn3, rewardsEarnedDropIn4:rewardsEarnedDropIn4,
+                    rewardsEarnedDropIn5:rewardsEarnedDropIn5, rewardsEarnedDropIn6:rewardsEarnedDropIn6,
+                    rewardsRedeemedDropIn1:rewardsRedeemedDropIn1, rewardsRedeemedDropIn2:rewardsRedeemedDropIn2,
+                    rewardsRedeemedDropIn3:rewardsRedeemedDropIn3, rewardsRedeemedDropIn4:rewardsRedeemedDropIn4,
+                    rewardsRedeemedDropIn5:rewardsRedeemedDropIn5, rewardsRedeemedDropIn6:rewardsRedeemedDropIn6};
 
         barMetricsArray.push(temp);
         //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
