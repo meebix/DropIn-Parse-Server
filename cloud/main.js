@@ -550,30 +550,12 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
 
 Parse.Cloud.define('barDashboardDropInMetrics', function(req, res) {
 
-  var d = new Date(); // for now
-  var hour = d.getHours();
-
-  if (hour > 9) {
-
-    var todaysDate = new Date();
-    todaysDate.setHours(0,0,0,0);
-
-  }
-
-  else {
-
-    var todaysDate = new Date();
-    todaysDate.setDate(todaysDate.getDate() - 1);
-    todaysDate.setHours(0,0,0,0);
-
-  }
-
 
   var barMetricsArray = [];
 
   var BarMetrics = Parse.Object.extend("Metrics_DropIn");
   var query = new Parse.Query(BarMetrics);
-  query.greaterThanOrEqualTo("date", todaysDate);
+  query.descending("createdAt");
   query.limit(1);
   query.find({
     success: function(results) {
