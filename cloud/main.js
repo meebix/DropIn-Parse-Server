@@ -510,9 +510,13 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
         var lifetimeRewardsRedeemSat = object.get('lifetimeRewardsRedeemSat');
         var lifetimeRewardsRedeemSun = object.get('lifetimeRewardsRedeemSun');
 
+        var newUserCountWeek = object.get('newUserCountWeek');
+        var activeUserCountWeek = object.get('activeUserCountWeek');
+
         //res.success(object.get('totalUsersUndef'));
 
-        var temp = {lifeTimeRedemption:lifeTimeRedemption, lifeTimeVisits:lifeTimeVisits,
+        var temp = {newUserCountWeek:newUserCountWeek, activeUserCountWeek:activeUserCountWeek,
+          lifeTimeRedemption:lifeTimeRedemption, lifeTimeVisits:lifeTimeVisits,
           barName:barName,rewardEarnedMinus7: rwdEarnedMinus7,
           lifetimeRewardsRedeemMon: lifetimeRewardsRedeemMon,lifetimeRewardsRedeemTue: lifetimeRewardsRedeemTue,
           lifetimeRewardsRedeemWed: lifetimeRewardsRedeemWed,lifetimeRewardsRedeemThu: lifetimeRewardsRedeemThu,
