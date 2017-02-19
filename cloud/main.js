@@ -548,5 +548,62 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
 });
 
 
+Parse.Cloud.define('barDashboardDropInMetrics', function(req, res) {
+
+  var d = new Date(); // for now
+  var hour = d.getHours();
+
+  if (hour > 9) {
+
+    var todaysDate = new Date();
+    todaysDate.setHours(0,0,0,0);
+
+  }
+
+  else {
+
+    var todaysDate = new Date();
+    todaysDate.setDate(todaysDate.getDate() - 1);
+    todaysDate.setHours(0,0,0,0);
+
+  }
+
+
+  var barMetricsArray = [];
+
+  var BarMetrics = Parse.Object.extend("Metrics_DropIn");
+  var query = new Parse.Query(BarMetrics);
+  query.greaterThanOrEqualTo("date", todaysDate);
+  query.limit(1);
+  query.find({
+    success: function(results) {
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+
+
+        var rewardsEarnedDropIn = object.get('rewardsEarned');
+        var rewardsRedeemedDropIn = object.get('rewardsRedeemed');
+
+
+        //res.success(object.get('totalUsersUndef'));
+
+        var temp = {rewardsEarnedDropIn:rewardsEarnedDropIn, rewardsRedeemedDropIn:rewardsRedeemedDropIn};
+
+        barMetricsArray.push(temp);
+        //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
+
+      }
+
+      res.success(barMetricsArray);
+
+    },
+    error: function(error) {
+      res.error("Error: " + error.code + " " + error.message);
+    }
+  });
+
+});
+
+
 
 ///########### cloud code function for Drop In Insight ##############################
