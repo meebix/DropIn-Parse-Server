@@ -536,24 +536,23 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
           rewardsEarnedWeekUniq: rwdEarnedWeekUniq, rewardsRedeemedWeek: rwdRedeemWeek,
           rewardsEarnedWeek: rwdEarnedWeek};
 
-        barMetricsArray.push(temp);
-        //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
+          barMetricsArray.push(temp);
+          //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
 
+        }
+
+        res.success(barMetricsArray);
+
+      },
+      error: function(error) {
+        res.error("Error: " + error.code + " " + error.message);
       }
-
-      res.success(barMetricsArray);
-
-    },
-    error: function(error) {
-      res.error("Error: " + error.code + " " + error.message);
-    }
-  });
+    });
 
 });
 
 
 Parse.Cloud.define('barDashboardDropInMetrics', function(req, res) {
-
 
   var barMetricsArray = [];
 
@@ -565,6 +564,8 @@ Parse.Cloud.define('barDashboardDropInMetrics', function(req, res) {
     success: function(results) {
       for (var i = 0; i < results.length; i++) {
         var object = results[i];
+
+        var rewardsRedeemArray = [];
 
 
         var rewardsEarnedDropIn = object.get('rewardsEarned');
@@ -588,28 +589,30 @@ Parse.Cloud.define('barDashboardDropInMetrics', function(req, res) {
         //res.success(object.get('totalUsersUndef'));
 
         var temp = {rewardsEarnedDropIn:rewardsEarnedDropIn, rewardsRedeemedDropIn:rewardsRedeemedDropIn,
-                    rewardsEarnedDropIn1:rewardsEarnedDropIn1, rewardsEarnedDropIn2:rewardsEarnedDropIn2,
-                    rewardsEarnedDropIn3:rewardsEarnedDropIn3, rewardsEarnedDropIn4:rewardsEarnedDropIn4,
-                    rewardsEarnedDropIn5:rewardsEarnedDropIn5, rewardsEarnedDropIn6:rewardsEarnedDropIn6,
-                    rewardsRedeemedDropIn1:rewardsRedeemedDropIn1, rewardsRedeemedDropIn2:rewardsRedeemedDropIn2,
-                    rewardsRedeemedDropIn3:rewardsRedeemedDropIn3, rewardsRedeemedDropIn4:rewardsRedeemedDropIn4,
-                    rewardsRedeemedDropIn5:rewardsRedeemedDropIn5, rewardsRedeemedDropIn6:rewardsRedeemedDropIn6};
+          rewardsEarnedDropIn1:rewardsEarnedDropIn1, rewardsEarnedDropIn2:rewardsEarnedDropIn2,
+          rewardsEarnedDropIn3:rewardsEarnedDropIn3, rewardsEarnedDropIn4:rewardsEarnedDropIn4,
+          rewardsEarnedDropIn5:rewardsEarnedDropIn5, rewardsEarnedDropIn6:rewardsEarnedDropIn6,
+          rewardsRedeemedDropIn1:rewardsRedeemedDropIn1, rewardsRedeemedDropIn2:rewardsRedeemedDropIn2,
+          rewardsRedeemedDropIn3:rewardsRedeemedDropIn3, rewardsRedeemedDropIn4:rewardsRedeemedDropIn4,
+          rewardsRedeemedDropIn5:rewardsRedeemedDropIn5, rewardsRedeemedDropIn6:rewardsRedeemedDropIn6};
 
-        barMetricsArray.push(temp);
-        //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
+          barMetricsArray.push(temp);
+          //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
 
+        }
+
+        res.success(barMetricsArray);
+
+
+      },
+      error: function(error) {
+        res.error("Error: " + error.code + " " + error.message);
       }
-
-      res.success(barMetricsArray);
-
-    },
-    error: function(error) {
-      res.error("Error: " + error.code + " " + error.message);
-    }
-  });
+    });
 
 });
 
 
 
-///########### cloud code function for Drop In Insight ##############################
+
+  ///########### cloud code function for Drop In Insight ##############################
