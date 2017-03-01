@@ -63,8 +63,6 @@ Parse.Cloud.define("incrementBadge", function(request, response) {
 ///########### cloud code function for Drop In Emails ##############################
 Parse.Cloud.define('emailAudit', function(req, res) {
 
-  var date =
-
   var Emails = Parse.Object.extend("Marketing_Emails_Audit");
   var email = new Emails();
 
