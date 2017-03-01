@@ -544,6 +544,9 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
         var newUserCountWeek = object.get('newUserCountWeek');
         var activeUserCountWeek = object.get('activeUserCountWeek');
 
+        var rewardTypeRedeemedMinus7 = object.get('rewardTypeRedeemedMinus7');
+        var rewardTypeRedeemedCountMinus7 = object.get('rewardTypeRedeemedCountMinus7');
+
         //res.success(object.get('totalUsersUndef'));
 
         var temp = {newUserCountWeek:newUserCountWeek, activeUserCountWeek:activeUserCountWeek,
@@ -565,7 +568,7 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
           rewardRedeemMinus3: rwdRedeemMinus3, rewardRedeemMinus2: rwdRedeemMinus2,
           rewardRedeemMinus1: rwdRedeemMinus1,rewardsRedeemedWeekUniq: rwdRedeemWeekUniq,
           rewardsEarnedWeekUniq: rwdEarnedWeekUniq, rewardsRedeemedWeek: rwdRedeemWeek,
-          rewardsEarnedWeek: rwdEarnedWeek};
+          rewardsEarnedWeek: rwdEarnedWeek, rewardTypeRedeemedMinus7:rewardTypeRedeemedMinus7, rewardTypeRedeemedCountMinus7:rewardTypeRedeemedCountMinus7};
 
           barMetricsArray.push(temp);
           //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
