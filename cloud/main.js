@@ -546,6 +546,7 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
 
         var rewardTypeRedeemedMinus7 = object.get('rewardTypeRedeemedMinus7');
         var rewardTypeRedeemedCountMinus7 = object.get('rewardTypeRedeemedCountMinus7');
+        var date = object.get('date');
 
         //res.success(object.get('totalUsersUndef'));
 
@@ -559,7 +560,7 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
           lifetimeRewardsEarnedMon: lifetimeRewardsEarnedMon,lifetimeRewardsEarnedTue: lifetimeRewardsEarnedTue,
           lifetimeRewardsEarnedWed: lifetimeRewardsEarnedWed,lifetimeRewardsEarnedThu: lifetimeRewardsEarnedThu,
           lifetimeRewardsEarnedFri: lifetimeRewardsEarnedFri,lifetimeRewardsEarnedSat: lifetimeRewardsEarnedSat,
-          lifetimeRewardsEarnedSun: lifetimeRewardsEarnedSun,
+          lifetimeRewardsEarnedSun: lifetimeRewardsEarnedSun,date:date,
           rewardEarnedMinus6: rwdEarnedMinus6,rewardEarnedMinus5: rwdEarnedMinus5,
           rewardEarnedMinus4: rwdEarnedMinus4,rewardEarnedMinus3: rwdEarnedMinus3,
           rewardEarnedMinus2: rwdEarnedMinus2,rewardEarnedMinus1: rwdEarnedMinus1,
