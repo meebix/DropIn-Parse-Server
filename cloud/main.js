@@ -92,7 +92,7 @@ Parse.Cloud.define('emailAudit', function(req, res) {
   });
 
 
-}
+});
 
 
 ///########### cloud code function for Drop In Insight ##############################
