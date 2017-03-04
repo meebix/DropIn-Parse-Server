@@ -691,10 +691,14 @@ Parse.Cloud.define('barDashboardMonthlyMetrics', function(req, res) {
         var activeUserCountMonth = object.get('activeUserCountMonth');
 
 
+        var rewardTypeRedeemedMonth = object.get('rewardTypeRedeemedMonth');
+        var rewardTypeRedeemedCountMonth = object.get('rewardTypeRedeemedCountMonth');
+
+
 
         //res.success(object.get('totalUsersUndef'));
 
-        var temp = {barName:barName, monthlyRewardsRedeemedUniq:monthlyRewardsRedeemedUniq,
+        var temp = {rewardTypeRedeemedMonth:rewardTypeRedeemedMonth, rewardTypeRedeemedCountMonth:rewardTypeRedeemedCountMonth, barName:barName, monthlyRewardsRedeemedUniq:monthlyRewardsRedeemedUniq,
                     monthlyRewardsRedeemed:monthlyRewardsRedeemed, monthlyRewardsEarnedUniq:monthlyRewardsEarnedUniq,
                     monthlyRewardsEarned:monthlyRewardsEarned, newUserCountMonth:newUserCountMonth,
                     activeUserCountMonth:activeUserCountMonth};
