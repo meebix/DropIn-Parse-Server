@@ -604,6 +604,7 @@ Parse.Cloud.define('barDashboardDropInMetrics', function(req, res) {
 
 
         var rewardsEarnedDropIn = object.get('rewardsEarned');
+        var rewardsEarnedDropInMonthly = object.get('monthlyRewardsEarned');
         var rewardsEarnedDropIn1 = object.get('rewardsEarnedMinus1');
         var rewardsEarnedDropIn2 = object.get('rewardsEarnedMinus2');
         var rewardsEarnedDropIn3 = object.get('rewardsEarnedMinus3');
@@ -613,6 +614,7 @@ Parse.Cloud.define('barDashboardDropInMetrics', function(req, res) {
 
 
         var rewardsRedeemedDropIn = object.get('rewardsRedeemed');
+        var rewardsRedeemedDropInMonthly = object.get('monthlyRewardsRedeemed');
         var rewardsRedeemedDropIn1 = object.get('rewardRedeemedMinus1');
         var rewardsRedeemedDropIn2 = object.get('rewardRedeemedMinus2');
         var rewardsRedeemedDropIn3 = object.get('rewardRedeemedMinus3');
@@ -623,7 +625,7 @@ Parse.Cloud.define('barDashboardDropInMetrics', function(req, res) {
 
         //res.success(object.get('totalUsersUndef'));
 
-        var temp = {rewardsEarnedDropIn:rewardsEarnedDropIn, rewardsRedeemedDropIn:rewardsRedeemedDropIn,
+        var temp = {rewardsRedeemedDropInMonthly:rewardsRedeemedDropInMonthly, rewardsEarnedDropInMonthly:rewardsEarnedDropInMonthly, rewardsEarnedDropIn:rewardsEarnedDropIn, rewardsRedeemedDropIn:rewardsRedeemedDropIn,
           rewardsEarnedDropIn1:rewardsEarnedDropIn1, rewardsEarnedDropIn2:rewardsEarnedDropIn2,
           rewardsEarnedDropIn3:rewardsEarnedDropIn3, rewardsEarnedDropIn4:rewardsEarnedDropIn4,
           rewardsEarnedDropIn5:rewardsEarnedDropIn5, rewardsEarnedDropIn6:rewardsEarnedDropIn6,
