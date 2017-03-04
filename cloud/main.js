@@ -671,7 +671,7 @@ Parse.Cloud.define('barDashboardMonthlyMetrics', function(req, res) {
     query.ascending("createdAt");
 
   }
-  
+  query.limit(1);
   query.find({
     success: function(results) {
       for (var i = 0; i < results.length; i++) {
