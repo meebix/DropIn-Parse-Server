@@ -661,8 +661,9 @@ Parse.Cloud.define('barDashboardMonthlyMetrics', function(req, res) {
   var BarMetrics = Parse.Object.extend("Metrics_Bars");
   var query = new Parse.Query(BarMetrics);
   query.equalTo("barId", new BarPointer({id: req.params.barId}));
-  query.equalTo("monthString", dateToCheck);
+  //query.equalTo("monthString", dateToCheck);
   query.include("barId");
+  /*
   if (descOrAsc == "desc") {
     query.descending("createdAt");
   }
@@ -670,6 +671,7 @@ Parse.Cloud.define('barDashboardMonthlyMetrics', function(req, res) {
     query.ascending("createdAt");
 
   }
+  */
   query.find({
     success: function(results) {
       for (var i = 0; i < results.length; i++) {
