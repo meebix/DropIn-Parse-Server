@@ -649,5 +649,69 @@ Parse.Cloud.define('barDashboardDropInMetrics', function(req, res) {
 
 
 
+Parse.Cloud.define('barDashboardMonthlyMetrics', function(req, res) {
+
+  var dateToCheck = req.params.dateToCheck;
+  var descOrAsc = req.params.descOrAsc;
+
+  var BarPointer = Parse.Object.extend("Bar");
+
+  var barMetricsArray = [];
+
+  var BarMetrics = Parse.Object.extend("Metrics_Bars");
+  var query = new Parse.Query(BarMetrics);
+  query.equalTo("barId", new BarPointer({id: req.params.barId}));
+  query.equalTo("monthString", dateToCheck);
+  query.include("barId");
+  if (descOrAsc == "desc") {
+    query.descending("createdAt");
+  }
+  else {
+    query.ascending("createdAt");
+
+  }
+  query.find({
+    success: function(results) {
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+
+
+
+        var barName =  object.get('barId').get('name');
+        var monthlyRewardsRedeemedUniq = object.get('monthlyRewardsRedeemedUniq');
+        var monthlyRewardsRedeemed = object.get('monthlyRewardsRedeemed');
+
+        var monthlyRewardsEarnedUniq = object.get('monthlyRewardsEarnedUniq');
+        var monthlyRewardsEarned = object.get('monthlyRewardsEarned');
+        var newUserCountMonth = object.get('newUserCountMonth');
+        var activeUserCountMonth = object.get('activeUserCountMonth');
+
+
+
+        //res.success(object.get('totalUsersUndef'));
+
+        var temp = {barName:barName, monthlyRewardsRedeemedUniq:monthlyRewardsRedeemedUniq,
+                    monthlyRewardsRedeemed:monthlyRewardsRedeemed, monthlyRewardsEarnedUniq:monthlyRewardsEarnedUniq,
+                    monthlyRewardsEarned:monthlyRewardsEarned, newUserCountMonth:newUserCountMonth,
+                    activeUserCountMonth:activeUserCountMonth};
+
+        barMetricsArray.push(temp);
+          //barMetricsArray.push([barName,rewardsToday,earnedRewardsRedeemedToday,rewardsRedeemedToday,monthlyRewardsEarnedUniq,earnedRewardsRedeemedMonthlyUniq,earnedRewardsRedeemedMonthly,monthlyRewardsEarned,lifetimeRewardsEarned,monthlyActiveUsers,lifetimeActiveUsers, results.length]);
+
+        }
+
+        res.success(barMetricsArray);
+
+      },
+      error: function(error) {
+        res.error("Error: " + error.code + " " + error.message);
+      }
+    });
+
+});
+
+
+
+
 
   ///########### cloud code function for Drop In Insight ##############################
