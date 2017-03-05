@@ -503,7 +503,7 @@ Parse.Cloud.define('barDashboardMetrics', function(req, res) {
         var barName =  object.get('barId').get('name');
         var rwdRedeemWeekUniq = object.get('rewardsRedeemedWeekUniq');
         var rwdEarnedWeekUniq = object.get('rewardsEarnedWeekUniq');
-        var rwdRedeemWeek = object.get('rewardsRedeemedWeekUniq');
+        var rwdRedeemWeek = object.get('rewardsRedeemedWeek');
         var rwdEarnedWeek = object.get('rewardsEarnedWeekUniq');
 
         var rwdEarnedMinus1 = object.get('rewardsEarnedMinus1');
