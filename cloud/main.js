@@ -35,6 +35,48 @@ Parse.Cloud.define("pushToAll", function(request, response) {
 
 
 
+
+Parse.Cloud.define("pushToSpecificUser", function(request, response) {
+  var message = request.params.message;
+  var userIdPassed = request.params.userId;
+
+  if (message != null && message !== "") {
+    message = message.trim();
+  } else {
+    response.error("Must provide \"message\" in JSON data");
+    return;
+  }
+
+  var UserId = Parse.Object.extend("_User");
+
+
+  var pushQuery = new Parse.Query(Parse.Installation);
+  pushQuery.equalTo('userId', new UserId({id: userIdPassed}));
+  // pushQuery.containedIn("deviceType", ["ios", "android"]); // errors if no iOS certificate
+
+  // Send push notification to query
+  Parse.Push.send({
+    where: pushQuery, // Set our installation query
+    data: {
+      alert: message,
+      badge: "Increment",
+      sound: 'default'
+    }
+  }, {
+    useMasterKey: true,
+    success: function() {
+      // Push was successful
+      console.log("Message was sent successfully");
+      response.success('true');
+    },
+    error: function(error) {
+      response.error(error);
+    }
+  });
+});
+
+
+
 Parse.Cloud.define("incrementBadge", function(request, response) {
 
   var pushQuery = new Parse.Query(Parse.Installation);
