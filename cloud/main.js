@@ -135,6 +135,38 @@ Parse.Cloud.define('emailAudit', function(req, res) {
 });
 
 
+
+Parse.Cloud.define('mobileAudit', function(req, res) {
+
+  var Emails = Parse.Object.extend("Marketing_Mobile_Audit");
+  var email = new Emails();
+
+  var UserId = Parse.Object.extend("_User");
+
+  email.set("date", new Date());
+  email.set("type", req.params.mobileType);
+  email.set("userId", new UserId({id: req.params.userId}));
+
+  email.save(null, {
+    success: function(faq) {
+
+      res.success("Save Success");
+      // Execute any logic that should take place after the object is saved.
+
+    },
+    error: function(faq, error) {
+
+      res.error("Error: " + error.code + " " + error.message);
+      // Execute any logic that should take place if the save fails.
+      // error is a Parse.Error with an error code and message.
+
+    }
+  });
+
+
+});
+
+
 ///########### cloud code function for Drop In Insight ##############################
 
 Parse.Cloud.define('dropInRewardsEarned', function(req, res) {
