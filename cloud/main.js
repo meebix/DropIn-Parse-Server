@@ -167,6 +167,36 @@ Parse.Cloud.define('mobileAudit', function(req, res) {
 });
 
 
+
+Parse.Cloud.define('saveUserMessage', function(req, res) {
+
+  var UserPointer = Parse.Object.extend("_User");
+  var Bar = Parse.Object.extend("Bar");
+  var Message = Parse.Object.extend("Messages");
+
+  var UserMessages = Parse.Object.extend("Users_Messages");
+  var userMessages = new UserMessages();
+  userMessages.set("userId", new UserPointer({id: req.params.userId}));
+  userMessages.set("userHasViewed", false);
+  userMessages.set("barId", new Bar({id: req.params.barObjId}));//barObjId
+  userMessages.set("messageId", new Message({id: req.params.messageId}));
+  //saveArray.push(userMessages);
+  userMessages.save(null, {
+    success: function(faq) {
+
+      //console.log("Saved " + currentCount + " of " + total);
+    },
+    error: function(faq, error) {
+
+    }
+  });
+
+
+
+});
+
+
+
 ///########### cloud code function for Drop In Insight ##############################
 
 Parse.Cloud.define('dropInRewardsEarned', function(req, res) {
