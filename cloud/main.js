@@ -1,4 +1,4 @@
-///########### Push notifications for Drop In ##############################
+///########### Push notifications for Drop In ##############################//
 
 Parse.Cloud.define("pushToAll", function(request, response) {
   var message = request.params.message;
